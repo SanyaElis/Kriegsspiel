@@ -1,17 +1,17 @@
 package ru.vsu.cs.eliseev.battlefield;
 
-public class Ground extends Cell implements Print{
+public class Fortress extends Cell implements Print {
 
-    private static final int DefaultDefenceBonus = 0;
+    private static final int DefaultDefenceBonus = 4;
 
-    public Ground() {
+    public Fortress() {
         super(true, DefaultDefenceBonus, null);
     }
 
     @Override
     public void print() {
         if (warrior == null)
-            System.out.print(".");
+            System.out.print("\uD83C\uDFF0");
         else warrior.print();
     }
 }

@@ -1,4 +1,4 @@
-package ru.vsu.cs.eliseev.troops;
+package ru.vsu.cs.eliseev.units;
 
 public class Position {
     private int x;
@@ -7,5 +7,13 @@ public class Position {
     public Position(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }
