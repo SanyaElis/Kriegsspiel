@@ -15,7 +15,7 @@ public abstract class Warrior implements Moving, Printable {
     @Override
     public boolean move(Position pos) {
         return false;
-    }
+    }//todo брать только I четверть
 
     protected Warrior(Position position, int speed, int range, int attack, int defence) {
         this.position = position;

@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Player {//todo отдать приказ на передвижение, хранить клетки которые видит игрок (туман войны) тумана не будет
 
-    //private final int numOfPlayer;
     private final PlayerNumber playerNumber;//todo убрать
     private Position[] positionsOfArsenal;
     private List<Warrior> troops;//9 пехотинцами, 4 кавалеристами, 1 артиллерией и 1 быстрой артиллерией

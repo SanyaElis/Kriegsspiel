@@ -1,6 +1,5 @@
 package ru.vsu.cs.eliseev.game.console;
 
-import ru.vsu.cs.eliseev.game.battlefield.*;
 import ru.vsu.cs.eliseev.game.battlefield.Cell;
 import ru.vsu.cs.eliseev.game.field.Battlefield;
 

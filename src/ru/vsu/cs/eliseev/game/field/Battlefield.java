@@ -12,10 +12,11 @@ import java.util.List;
 public class Battlefield {
 
     private Cell[][] field;
-    private List<Warrior> firstPlayerTroops;//todo убрать
+    private List<Warrior> firstPlayerTroops;//todo убрать, создать список игроков
     private List<Warrior> secondPlayerTroops;
 
     public Battlefield() {
+
         Player p1 = new Player(PlayerNumber.P1);
         Player p2 = new Player(PlayerNumber.P2);
 

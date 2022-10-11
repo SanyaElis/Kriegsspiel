@@ -13,11 +13,6 @@ public class Cannon extends Warrior implements Moving, Printable {
         super(position, DefaultSpeed, DefaultRange, DefaultAttack, DefaultDefence);
     }
 
-//    @Override
-//    public boolean move(Position pos) {
-//        return false;
-//    }
-
     @Override
     public String print() {
         return "\uD83D\uDC27";

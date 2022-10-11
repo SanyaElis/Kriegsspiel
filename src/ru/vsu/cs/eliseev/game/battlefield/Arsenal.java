@@ -1,7 +1,7 @@
 package ru.vsu.cs.eliseev.game.battlefield;
 
 public class Arsenal extends Cell implements Printable {//todo научится отличать чей арсенал
-    //private static final int numOfPlayer;
+    // игрок будет знать его арсенал
     private static final int DefaultDefenceBonus = 0;
 
     public Arsenal() {
