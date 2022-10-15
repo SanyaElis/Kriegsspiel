@@ -1,5 +1,6 @@
 package ru.vsu.cs.eliseev.game.utils;
 
+import ru.vsu.cs.eliseev.game.player.Player;
 import ru.vsu.cs.eliseev.game.units.*;
 
 import java.io.File;
@@ -28,9 +29,11 @@ public class Utils {
         return new Position(Integer.parseInt(coordinates[0]),Integer.parseInt(coordinates[1]));
     }
 
-    public static List<Warrior> readWarriorsFromFile(String fileName) throws FileNotFoundException {
+    public static Player readWarriorsFromFile(String fileName) throws FileNotFoundException {//todo возвращать игрока
         List <Warrior> troops = new ArrayList<>();
         String[] str = readLinesFromFile(fileName);
+        Position[] positionsOfArsenal = new Position[2];
+        List<Warrior> relays = new ArrayList<>();
         for (String s : str) {
             String[] string = s.split("\\s+");
             switch (string[0]) {
@@ -54,8 +57,28 @@ public class Utils {
                         troops.add(new Cavalry(fromSting(string[j])));
                     }
                     break;
+                case ("Relay"):
+                    for (int j = 1; j < string.length; j++) {
+                        Warrior relay = new Relay(fromSting(string[j]));
+                        troops.add(relay);
+                        relays.add(relay);
+                    }
+                    break;
+                case ("SwiftRelay"):
+                    for (int j = 1; j < string.length; j++) {
+                        Warrior swiftRelay = new SwiftRelay(fromSting(string[j]));
+                        troops.add(swiftRelay);
+                        relays.add(swiftRelay);
+                    }
+                    break;
+                case ("Arsenal"):
+                    for (int j = 1; j < string.length; j++) {
+                        positionsOfArsenal[j - 1] = fromSting(string[j]);
+                    }
             }
         }
-        return troops;
+        Player player = new Player(troops, positionsOfArsenal);
+        player.setRelay(relays);
+        return player;
     }
 }

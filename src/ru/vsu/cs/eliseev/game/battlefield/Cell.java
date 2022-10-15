@@ -1,8 +1,9 @@
 package ru.vsu.cs.eliseev.game.battlefield;
 
+import ru.vsu.cs.eliseev.game.units.Drawable;
 import ru.vsu.cs.eliseev.game.units.Warrior;
 
-public abstract class Cell implements Printable {
+public abstract class Cell implements Drawable {
 
     protected boolean patency;//проходимость
     protected int defenceBonus;
@@ -16,5 +17,13 @@ public abstract class Cell implements Printable {
 
     public void setWarrior(Warrior warrior) {
         this.warrior = warrior;
+    }
+
+    public Warrior getWarrior() {
+        return warrior;
+    }
+
+    public boolean isPatency() {
+        return patency;
     }
 }

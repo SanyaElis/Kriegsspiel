@@ -1,8 +1,6 @@
 package ru.vsu.cs.eliseev.game.units;
 
-import ru.vsu.cs.eliseev.game.battlefield.Printable;
-
-public class Cannon extends Warrior implements Moving, Printable {
+public class Cannon extends Warrior implements Moving, Drawable {
 
     private static final int DefaultSpeed = 1;
     private static final int DefaultRange = 3;

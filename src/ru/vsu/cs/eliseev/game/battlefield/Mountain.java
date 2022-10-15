@@ -1,7 +1,9 @@
 package ru.vsu.cs.eliseev.game.battlefield;
 
 
-public class Mountain extends Cell implements Printable {
+import ru.vsu.cs.eliseev.game.draw.DrawField;
+
+public class Mountain extends Cell {
 
     private static final int DefaultDefenceBonus = 0;
 
@@ -11,8 +13,6 @@ public class Mountain extends Cell implements Printable {
 
     @Override
     public String print() {
-        if (warrior == null)
-            return  "⛰";
-        else return warrior.print();
+        return DrawField.drawOnConsole(this);
     }
 }

@@ -1,7 +1,9 @@
 package ru.vsu.cs.eliseev.game.battlefield;
 
-public class Arsenal extends Cell implements Printable {//todo научится отличать чей арсенал
-    // игрок будет знать его арсенал
+
+import ru.vsu.cs.eliseev.game.draw.DrawField;
+
+public class Arsenal extends Cell  {
     private static final int DefaultDefenceBonus = 0;
 
     public Arsenal() {
@@ -10,8 +12,6 @@ public class Arsenal extends Cell implements Printable {//todo научится 
 
     @Override
     public String print() {
-        if (warrior == null)
-            return "⚑";
-        else return warrior.print() + "⚑";
+        return DrawField.drawOnConsole(this);
     }
 }

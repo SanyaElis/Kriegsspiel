@@ -1,6 +1,8 @@
 package ru.vsu.cs.eliseev.game.battlefield;
 
-public class Fortress extends Cell implements Printable {
+import ru.vsu.cs.eliseev.game.draw.DrawField;
+
+public class Fortress extends Cell  {
 
     private static final int DefaultDefenceBonus = 4;
 
@@ -10,8 +12,6 @@ public class Fortress extends Cell implements Printable {
 
     @Override
     public String print() {
-        if (warrior == null)
-            return "\uD83C\uDFF0";
-        else return warrior.print() + "\uD83C\uDFF0";
+        return DrawField.drawOnConsole(this);
     }
 }

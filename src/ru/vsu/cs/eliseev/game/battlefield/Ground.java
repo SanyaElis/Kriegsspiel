@@ -1,17 +1,16 @@
 package ru.vsu.cs.eliseev.game.battlefield;
 
-public class Ground extends Cell implements Printable {
+import ru.vsu.cs.eliseev.game.draw.DrawField;
+
+public class Ground extends Cell {
 
     private static final int DefaultDefenceBonus = 0;
 
     public Ground() {
         super(true, DefaultDefenceBonus, null);
     }
-
     @Override
     public String print() {
-        if (warrior == null)
-            return "_";
-        else return warrior.print();
+        return DrawField.drawOnConsole(this);
     }
 }
