@@ -24,7 +24,6 @@ public class ConsoleGame {
         while (!command.equals("stop")){
 
             for (Player p: players) {
-                System.out.println(players.size());
                 int numOfMoves  = 0;
                 int numOfAttacks  = 0;
                 System.out.println("Entry command: move, attack");
