@@ -14,6 +14,6 @@ public class Cavalry extends Warrior implements Moving, Drawable {
 
     @Override
     public String print() {
-        return "\uD83D\uDC0E";
+        return " \uD83D\uDC0E";
     }
 }

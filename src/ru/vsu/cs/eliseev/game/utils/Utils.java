@@ -29,7 +29,7 @@ public class Utils {
         return new Position(Integer.parseInt(coordinates[0]),Integer.parseInt(coordinates[1]));
     }
 
-    public static Player readWarriorsFromFile(String fileName) throws FileNotFoundException {//todo возвращать игрока
+    public static Player readWarriorsFromFile(String fileName) throws FileNotFoundException {
         List <Warrior> troops = new ArrayList<>();
         String[] str = readLinesFromFile(fileName);
         Position[] positionsOfArsenal = new Position[2];

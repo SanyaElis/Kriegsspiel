@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Initialization {
 
-    private static List<Player> players = new ArrayList<>();
+    private static final List<Player> players = new ArrayList<>();
 
     public static List<Player> initialization() {
         try {

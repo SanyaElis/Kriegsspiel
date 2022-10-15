@@ -13,6 +13,6 @@ public class Relay extends Warrior {
 
     @Override
     public String print() {
-        return "\uD83D\uDCEE";
+        return " \uD83D\uDCEE";
     }
 }

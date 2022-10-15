@@ -13,6 +13,6 @@ public class Cannon extends Warrior implements Moving, Drawable {
 
     @Override
     public String print() {
-        return "\uD83D\uDC27";
+        return " \uD83D\uDC27";
     }
 }

@@ -13,16 +13,15 @@ public abstract class Warrior implements Moving, Drawable {
         return position;
     }
     @Override
-    public boolean move(Position pos) {//1 проверить на возможность хода
+    public boolean move(Position pos) {
         if (Math.abs(position.getY() - pos.getY()) <= speed && Math.abs(position.getX() - pos.getX()) <= speed){
-            if (Battlefield.checkCommunication(this) && Battlefield.checkIsEmpty(pos)){
+            if (Battlefield.checkIsEmpty(pos) && Battlefield.checkCommunication(this)){
                 position = pos;
                 return true;
             }
         }
-        System.out.println("Слишком далеко");
         return false;
-    }//todo брать только I четверть
+    }
 
     protected Warrior(Position position, int speed, int range, int attack, int defence) {
         this.position = position;

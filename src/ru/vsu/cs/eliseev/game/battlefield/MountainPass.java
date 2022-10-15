@@ -9,6 +9,7 @@ public class MountainPass extends Cell  {
     public MountainPass() {
         super(true, DefaultDefenceBonus, null);
     }
+
     @Override
     public String print() {
         return DrawField.drawOnConsole(this);

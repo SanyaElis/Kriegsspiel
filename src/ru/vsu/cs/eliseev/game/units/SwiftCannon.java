@@ -13,6 +13,6 @@ public class SwiftCannon extends Warrior  {
 
     @Override
     public String print() {
-       return "\uD83D\uDD2B";
+       return " \uD83D\uDD2B";
     }
 }

@@ -13,6 +13,6 @@ public class Infantry extends Warrior {
 
     @Override
     public String print() {
-        return "⚔";
+        return " ⚔";
     }
 }

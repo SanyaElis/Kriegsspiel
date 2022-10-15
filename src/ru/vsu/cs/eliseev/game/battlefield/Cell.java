@@ -5,9 +5,9 @@ import ru.vsu.cs.eliseev.game.units.Warrior;
 
 public abstract class Cell implements Drawable {
 
-    protected boolean patency;//проходимость
+    protected boolean patency;
     protected int defenceBonus;
-    protected Warrior warrior;//тот кто сидит на клетке
+    protected Warrior warrior;
 
     public Cell(boolean patency, int defenceBonus, Warrior warrior) {
         this.patency = patency;
@@ -23,7 +23,7 @@ public abstract class Cell implements Drawable {
         return warrior;
     }
 
-    public boolean isPatency() {
+    public boolean isPatency() {//&& warrior != null
         return patency;
     }
 }
