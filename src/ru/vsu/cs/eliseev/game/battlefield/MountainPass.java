@@ -13,5 +13,5 @@ public class MountainPass extends Cell  {
     @Override
     public String print() {
         return DrawField.drawOnConsole(this);
-    }
+    }//todo переделать полиморфизм
 }

@@ -12,8 +12,9 @@ public abstract class Warrior implements Moving, Drawable {
     public Position getPosition() {
         return position;
     }
+
     @Override
-    public boolean move(Position pos) {
+    public boolean move(Position pos) {//todo возвращать позицию и добавить поле
         if (Math.abs(position.getY() - pos.getY()) <= speed && Math.abs(position.getX() - pos.getX()) <= speed){
             if (Battlefield.checkIsEmpty(pos) && Battlefield.checkCommunication(this)){
                 position = pos;

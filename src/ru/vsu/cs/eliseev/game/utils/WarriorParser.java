@@ -9,11 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Utils {
+public class WarriorParser {//todo переименовать, сделать не статическим
     /**
      * Чтение всего текстового файла в массив строк
      */
     public static String[] readLinesFromFile(String fileName) throws FileNotFoundException {
+        //todo Files.readAllLines(fileName);
         List<String> lines;
         try (Scanner scanner = new Scanner(new File(fileName), "UTF-8")) {
             lines = new ArrayList<>();
@@ -22,11 +23,6 @@ public class Utils {
             }
         }
         return lines.toArray(new String[0]);
-    }
-    public static Position fromSting(String str){
-        str = str.substring(1, str.length() - 1);
-        String[] coordinates = str.split("(\\s|[,;])+");
-        return new Position(Integer.parseInt(coordinates[0]),Integer.parseInt(coordinates[1]));
     }
 
     public static Player readWarriorsFromFile(String fileName) throws FileNotFoundException {
@@ -39,41 +35,41 @@ public class Utils {
             switch (string[0]) {
                 case ("Cannon"):
                     for (int j = 1; j < string.length; j++) {
-                        troops.add(new Cannon(fromSting(string[j])));
+                        troops.add(new Cannon(Position.fromSting(string[j])));
                     }
                     break;
                 case ("SwiftCannon"):
                     for (int j = 1; j < string.length; j++) {
-                        troops.add(new SwiftCannon(fromSting(string[j])));
+                        troops.add(new SwiftCannon(Position.fromSting(string[j])));
                     }
                     break;
                 case ("Infantry"):
                     for (int j = 1; j < string.length; j++) {
-                        troops.add(new Infantry(fromSting(string[j])));
+                        troops.add(new Infantry(Position.fromSting(string[j])));
                     }
                     break;
                 case ("Cavalry"):
                     for (int j = 1; j < string.length; j++) {
-                        troops.add(new Cavalry(fromSting(string[j])));
+                        troops.add(new Cavalry(Position.fromSting(string[j])));
                     }
                     break;
                 case ("Relay"):
                     for (int j = 1; j < string.length; j++) {
-                        Warrior relay = new Relay(fromSting(string[j]));
+                        Warrior relay = new Relay(Position.fromSting(string[j]));
                         troops.add(relay);
                         relays.add(relay);
                     }
                     break;
                 case ("SwiftRelay"):
                     for (int j = 1; j < string.length; j++) {
-                        Warrior swiftRelay = new SwiftRelay(fromSting(string[j]));
+                        Warrior swiftRelay = new SwiftRelay(Position.fromSting(string[j]));
                         troops.add(swiftRelay);
                         relays.add(swiftRelay);
                     }
                     break;
                 case ("Arsenal"):
                     for (int j = 1; j < string.length; j++) {
-                        positionsOfArsenal[j - 1] = fromSting(string[j]);
+                        positionsOfArsenal[j - 1] = Position.fromSting(string[j]);
                     }
             }
         }

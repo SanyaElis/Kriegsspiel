@@ -4,7 +4,7 @@ import ru.vsu.cs.eliseev.game.battlefield.Cell;
 import ru.vsu.cs.eliseev.game.field.Battlefield;
 import ru.vsu.cs.eliseev.game.player.Player;
 import ru.vsu.cs.eliseev.game.units.Position;
-import ru.vsu.cs.eliseev.game.utils.Utils;
+import ru.vsu.cs.eliseev.game.utils.WarriorParser;
 
 import java.util.List;
 import java.util.Scanner;
@@ -32,9 +32,9 @@ public class ConsoleGame {
                     switch (command) {
                         case ("move") -> {
                             System.out.println("Entry position of troop");
-                            Position from = Utils.fromSting(sc.nextLine());
+                            Position from = Position.fromSting(sc.nextLine());
                             System.out.println("Entry position of destination");
-                            Position to = Utils.fromSting(sc.nextLine());
+                            Position to = Position.fromSting(sc.nextLine());
                             if(!p.move(from, to)){
                                 System.out.println("Incorrect positions");
                             }

@@ -2,7 +2,7 @@ package ru.vsu.cs.eliseev.game.draw;
 
 import ru.vsu.cs.eliseev.game.battlefield.*;
 
-public class DrawField {
+public class DrawField {//todo интрефейс DrawField с разной реализацией
 
     public static String drawOnConsole(Arsenal arsenal) {
         if (arsenal.getWarrior() == null)

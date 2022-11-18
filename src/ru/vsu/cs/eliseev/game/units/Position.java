@@ -1,13 +1,6 @@
 package ru.vsu.cs.eliseev.game.units;
 
-public class Position {
-    private int x;
-    private int y;
-
-    public Position(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
+public record Position(int x, int y) {
 
     @Override
     public boolean equals(Object o) {
@@ -20,6 +13,11 @@ public class Position {
         return y == position.y;
     }
 
+    public static Position fromSting(String str) {
+        str = str.substring(1, str.length() - 1);
+        String[] coordinates = str.split("(\\s|[,;])+");
+        return new Position(Integer.parseInt(coordinates[0]), Integer.parseInt(coordinates[1]));
+    }
 
     public int getX() {
         return x;
