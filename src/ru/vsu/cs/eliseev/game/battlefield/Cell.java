@@ -1,9 +1,10 @@
 package ru.vsu.cs.eliseev.game.battlefield;
 
+import ru.vsu.cs.eliseev.game.draw.DrawingCell;
 import ru.vsu.cs.eliseev.game.units.Drawable;
 import ru.vsu.cs.eliseev.game.units.Warrior;
 
-public abstract class Cell implements Drawable {
+public abstract class Cell implements Drawing {//todo рисовку отдельно от этого класса или проще засунуть сюда
 
     protected boolean patency;
     protected int defenceBonus;
@@ -26,4 +27,5 @@ public abstract class Cell implements Drawable {
     public boolean isPatency() {//&& warrior != null
         return patency;
     }
+
 }

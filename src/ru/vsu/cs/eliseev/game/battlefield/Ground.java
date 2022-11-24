@@ -1,6 +1,7 @@
 package ru.vsu.cs.eliseev.game.battlefield;
 
-import ru.vsu.cs.eliseev.game.draw.DrawField;
+import ru.vsu.cs.eliseev.game.draw.ConsoleDraw;
+import ru.vsu.cs.eliseev.game.draw.DrawingCell;
 
 public class Ground extends Cell {
 
@@ -9,8 +10,9 @@ public class Ground extends Cell {
     public Ground() {
         super(true, DefaultDefenceBonus, null);
     }
+
     @Override
-    public String print() {
-        return DrawField.drawOnConsole(this);
+    public void draw(DrawingCell dc) {
+        dc.draw(this);
     }
 }

@@ -3,31 +3,21 @@ package ru.vsu.cs.eliseev.game.utils;
 import ru.vsu.cs.eliseev.game.player.Player;
 import ru.vsu.cs.eliseev.game.units.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-public class WarriorParser {//todo переименовать, сделать не статическим
-    /**
-     * Чтение всего текстового файла в массив строк
-     */
-    public static String[] readLinesFromFile(String fileName) throws FileNotFoundException {
-        //todo Files.readAllLines(fileName);
-        List<String> lines;
-        try (Scanner scanner = new Scanner(new File(fileName), "UTF-8")) {
-            lines = new ArrayList<>();
-            while (scanner.hasNext()) {
-                lines.add(scanner.nextLine());
-            }
-        }
-        return lines.toArray(new String[0]);
+public class WarriorParser {//done переименовать, сделать не статическим
+
+
+    public WarriorParser() {
     }
 
-    public static Player readWarriorsFromFile(String fileName) throws FileNotFoundException {
-        List <Warrior> troops = new ArrayList<>();
-        String[] str = readLinesFromFile(fileName);
+    public Player readWarriorsFromFile(Path fileName) throws IOException {
+        List<Warrior> troops = new ArrayList<>();
+        List<String> str = Files.readAllLines(fileName);
         Position[] positionsOfArsenal = new Position[2];
         List<Warrior> relays = new ArrayList<>();
         for (String s : str) {

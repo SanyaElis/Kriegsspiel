@@ -12,6 +12,7 @@ public class Player {
     private Position[] positionsOfArsenal;
     private List<Warrior> troops;
     private List<Warrior> relays = new ArrayList<>();
+    private Battlefield bf;
 
     public Player(List<Warrior> troops, Position[] positionsOfArsenal) {
 
@@ -23,8 +24,9 @@ public class Player {
     public boolean move(Position lastPos, Position newPos){
         for (Warrior troop: troops) {
             if (troop.getPosition().equals(lastPos)){
-                if (troop.move(newPos)){
-                    Battlefield.updateTroops(this);
+                if (troop.canReach(newPos) && bf.canMove(troop, newPos)){
+                    troop.move(newPos);
+                    bf.updateTroops(this);
                     return true;
                 }
             }
@@ -62,5 +64,9 @@ public class Player {
             }
         }
         return false;
+    }
+
+    public void setBattlefield(Battlefield bf){
+        this.bf = bf;
     }
 }

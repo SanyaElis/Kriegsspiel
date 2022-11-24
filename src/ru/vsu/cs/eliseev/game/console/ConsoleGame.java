@@ -1,15 +1,18 @@
 package ru.vsu.cs.eliseev.game.console;
 
 import ru.vsu.cs.eliseev.game.battlefield.Cell;
+import ru.vsu.cs.eliseev.game.draw.ConsoleDraw;
+import ru.vsu.cs.eliseev.game.draw.DrawingCell;
 import ru.vsu.cs.eliseev.game.field.Battlefield;
 import ru.vsu.cs.eliseev.game.player.Player;
 import ru.vsu.cs.eliseev.game.units.Position;
-import ru.vsu.cs.eliseev.game.utils.WarriorParser;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class ConsoleGame {
+public class ConsoleGame {//todo добавить рисователь
+    private static DrawingCell dc = new ConsoleDraw();
+
     public static void startGame(){
 
         Battlefield bf = new Battlefield();
@@ -67,7 +70,7 @@ public class ConsoleGame {
             }
             System.out.format("%3s",  i);
             for (int j = 0; j < 25; j++) {
-                System.out.format("%3s", field[i][j].print());
+                 field[i][j].draw(dc);
             }
             System.out.println();
         }

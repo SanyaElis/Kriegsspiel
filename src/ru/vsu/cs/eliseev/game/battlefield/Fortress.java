@@ -1,6 +1,7 @@
 package ru.vsu.cs.eliseev.game.battlefield;
 
-import ru.vsu.cs.eliseev.game.draw.DrawField;
+import ru.vsu.cs.eliseev.game.draw.ConsoleDraw;
+import ru.vsu.cs.eliseev.game.draw.DrawingCell;
 
 public class Fortress extends Cell  {
 
@@ -11,7 +12,7 @@ public class Fortress extends Cell  {
     }
 
     @Override
-    public String print() {
-        return DrawField.drawOnConsole(this);
+    public void draw(DrawingCell dc) {
+        dc.draw(this);
     }
 }
