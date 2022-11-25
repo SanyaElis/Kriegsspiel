@@ -7,40 +7,60 @@ import ru.vsu.cs.eliseev.game.game.API;
 import ru.vsu.cs.eliseev.game.game.VariationOfStep;
 import ru.vsu.cs.eliseev.game.units.Position;
 
+import java.util.Scanner;
+
 public class ConsoleAPI implements API {
-    private DrawingCell dc;
+
+    private DrawingCell dc = new ConsoleDraw();
+    private Scanner sc = new Scanner(System.in);
 
     public ConsoleAPI() {
-        dc = new ConsoleDraw();
+
     }
 
     @Override
     public boolean stop() {
-        return false;
+        System.out.println("if you want out print stop");
+        return sc.nextLine().equals("stop");
     }
 
     @Override
-    public boolean endStep() {
-        return false;
+    public void incorrectPosition() {
+        System.out.println("Incorrect positions");
     }
 
     @Override
     public VariationOfStep command() {
-        return null;
+        String variation;
+        while (true) {
+            System.out.println("Entry command: move, attack, end");
+            variation = sc.nextLine();
+            switch (variation) {
+                case ("move") -> {
+                    return VariationOfStep.MOVE;
+                }
+                case ("attack") -> {
+                    return VariationOfStep.ATTACK;
+                }
+                case ("end") -> {
+                    return VariationOfStep.END;
+                }
+            }
+        }
     }
 
     @Override
     public void drawBattlefield(Cell[][] field) {
 
         for (int i = 0; i < 20; i++) {
-            if (i == 0){
+            if (i == 0) {
                 System.out.print("   ");
                 for (int j = 0; j < 25; j++) {
-                    System.out.format("%3s",  j);
+                    System.out.format("%3s", j);
                 }
                 System.out.println();
             }
-            System.out.format("%3s",  i);
+            System.out.format("%3s", i);
             for (int j = 0; j < 25; j++) {
                 field[i][j].draw(dc);
             }
@@ -50,7 +70,13 @@ public class ConsoleAPI implements API {
     }
 
     @Override
-    public Position askPosition() {
-        return null;
+    public Position[] askPosition() {
+
+        System.out.println("Entry position of troop");
+        Position from = Position.fromSting(sc.nextLine());
+        System.out.println("Entry position of destination");
+        Position to = Position.fromSting(sc.nextLine());
+
+        return new Position[]{from, to};
     }
 }

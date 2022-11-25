@@ -29,4 +29,5 @@ public abstract class Warrior implements Moving, Drawable {
         this.attack = attack;
         this.defence = defence;
     }
+    abstract public void draw(DrawingWarrior dw);
 }

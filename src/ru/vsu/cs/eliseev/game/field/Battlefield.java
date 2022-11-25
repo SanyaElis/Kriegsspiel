@@ -21,7 +21,7 @@ public class Battlefield {
         field = new Cell[20][25];
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 25; j++) {
-                field[i][j] = new Ground();
+                field[i][j] = new Ground(new Position(j, i));
             }
         }
         for (Player p : players) {
@@ -30,12 +30,12 @@ public class Battlefield {
             p.setBattlefield(this);
         }
 
-        field[1][7] = new Fortress();
-        field[8][12] = new Fortress();
-        field[12][2] = new Fortress();
-        field[7][20] = new Fortress();
+        field[1][7] = new Fortress(new Position(7, 1));
+        field[8][12] = new Fortress(new Position(12, 8));
+        field[12][2] = new Fortress(new Position(2, 12));
+        field[7][20] = new Fortress(new Position(20, 7));
 
-        field[10][10] = new Mountain();
+        field[10][10] = new Mountain(new Position(10, 10));
     }
 
     public Cell[][] getField() {
@@ -44,7 +44,7 @@ public class Battlefield {
 
     public void setArsenals(Position[] positionsOfArsenals) {
         for (Position pos : positionsOfArsenals) {
-            field[pos.getY()][pos.getX()] = new Arsenal();
+            field[pos.getY()][pos.getX()] = new Arsenal(pos);
         }
     }
 

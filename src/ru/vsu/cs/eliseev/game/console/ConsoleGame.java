@@ -10,7 +10,7 @@ import ru.vsu.cs.eliseev.game.units.Position;
 import java.util.List;
 import java.util.Scanner;
 
-public class ConsoleGame {//todo добавить рисователь
+public class ConsoleGame {
     private static DrawingCell dc = new ConsoleDraw();
 
     public static void startGame(){
@@ -75,5 +75,4 @@ public class ConsoleGame {//todo добавить рисователь
             System.out.println();
         }
     }
-
 }

@@ -11,6 +11,11 @@ public class SwiftRelay extends Warrior{
     }
 
     @Override
+    public void draw(DrawingWarrior dw) {
+        dw.draw(this);
+    }
+
+    @Override
     public String print() {
         return " \uD83D\uDCE8";
     }

@@ -15,4 +15,9 @@ public class Relay extends Warrior {
     public String print() {
         return " \uD83D\uDCEE";
     }
+
+    @Override
+    public void draw(DrawingWarrior dw) {
+        dw.draw(this);
+    }
 }
