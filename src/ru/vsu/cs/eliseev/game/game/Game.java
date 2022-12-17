@@ -14,7 +14,7 @@ public class Game {
         this.gameAPI = gameAPI;
     }
 
-    public void startPlay(){
+    public void startPlay(){//todo сделать наоборот, не игра инициатор, а клиент
         gameAPI.drawBattlefield(bf.getField());
         List<Player> players = bf.getPlayers();
         VariationOfStep command = VariationOfStep.START;

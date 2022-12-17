@@ -3,7 +3,7 @@ package ru.vsu.cs.eliseev.game.draw;
 import ru.vsu.cs.eliseev.game.battlefield.*;
 import ru.vsu.cs.eliseev.game.units.*;
 
-public class ConsoleDraw implements DrawingCell, DrawingWarrior {//todo интерфейс DrawField с разной реализацией
+public class ConsoleDraw implements DrawingCell, DrawingWarrior {//todo разбить на классы
 
     public ConsoleDraw() {
     }

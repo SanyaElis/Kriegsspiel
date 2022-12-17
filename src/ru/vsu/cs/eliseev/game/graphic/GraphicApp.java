@@ -95,7 +95,6 @@ public class GraphicApp extends JFrame {
                         lastPos = Position.fromMouseClick(e.getX(), e.getY(), myGame.getWidth(), myGame.getHeight());
                     } else {
                         fromTo = new Position[]{lastPos, Position.fromMouseClick(e.getX(), e.getY(), myGame.getWidth(), myGame.getHeight())};
-                        System.out.println("Hi");
                         lastPos = null;
                     }
                 }
@@ -146,17 +145,17 @@ public class GraphicApp extends JFrame {
 
     public Position[] getFromTo() {
         statusLabel.setText("Choose troop and destiny");
-        while (fromTo == null){
-            new java.util.Timer().schedule(
-                    new java.util.TimerTask() {
-                        @Override
-                        public void run() {
-                            statusLabel.setText("Choose troop and destiny 123");
-                        }
-                    },
-                    5000
-            );
-        }
+//        while (fromTo == null) {
+//            new java.util.Timer().schedule(
+//                    new java.util.TimerTask() {
+//                        @Override
+//                        public void run() {
+//                            statusLabel.setText("Choose troop and destiny 123");
+//                        }
+//                    },
+//                    5000
+//            );
+//        }
         return fromTo;
     }
 
