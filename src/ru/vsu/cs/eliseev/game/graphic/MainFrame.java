@@ -36,8 +36,8 @@ public class MainFrame extends JFrame {
         mainField.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                //int row = jTable1.rowAtPoint(evt.getPoint());
-                //int col = jTable1.columnAtPoint(evt.getPoint());
+                int row = mainField.rowAtPoint(e.getPoint());
+                int col = mainField.columnAtPoint(e.getPoint());
                 if (SwingUtilities.isRightMouseButton(e)) {
                     lastPos = null;
                     fromTo = null;
@@ -45,11 +45,12 @@ public class MainFrame extends JFrame {
 
                 if (SwingUtilities.isLeftMouseButton(e)) {
                     if (lastPos == null) {
-                        //lastPos = Position.fromMouseClick(new Position(mainField.rowAtPoint(e.getPoint())).getX(), );
+                        lastPos = new Position(col, row);
                     } else {
-                        //fromTo = new Position[]{lastPos, Position.fromMouseClick(e.getX(), e.getY(), myGame.getWidth(), myGame.getHeight())};
+                        fromTo = new Position[]{lastPos, new Position(col, row)};
                         game2.move(fromTo);
                         lastPos = null;
+                        mainField.repaint();
                     }
                 }
             }
@@ -79,7 +80,7 @@ public class MainFrame extends JFrame {
 
     public static void main(String[] args) {
         MainFrame testFrame = new MainFrame();
-        testFrame.setSize(1000,1000);
+        testFrame.setSize(910,775);
         testFrame.setVisible(true);
     }
 }
