@@ -1,6 +1,6 @@
 package ru.vsu.cs.eliseev.game.units;
 
-public class Cavalry extends Warrior implements Moving, Drawable {
+public class Cavalry extends Warrior  {
 
     private static final int DefaultSpeed = 2;
     private static final int DefaultRange = 2;
@@ -11,14 +11,4 @@ public class Cavalry extends Warrior implements Moving, Drawable {
         super(position, DefaultSpeed, DefaultRange, DefaultAttack, DefaultDefence);
     }
 
-
-    @Override
-    public String print() {
-        return " \uD83D\uDC0E";
-    }
-
-    @Override
-    public void draw(DrawingWarrior dw) {
-        dw.draw(this);
-    }
 }

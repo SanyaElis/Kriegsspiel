@@ -1,27 +1,23 @@
 package ru.vsu.cs.eliseev.game.console;
 
 import ru.vsu.cs.eliseev.game.battlefield.Cell;
-import ru.vsu.cs.eliseev.game.draw.ConsoleDraw;
 import ru.vsu.cs.eliseev.game.draw.ConsoleDrawer;
-import ru.vsu.cs.eliseev.game.draw.DrawingCell;
 import ru.vsu.cs.eliseev.game.field.Battlefield;
-import ru.vsu.cs.eliseev.game.game.Game2;
-import ru.vsu.cs.eliseev.game.player.Player;
+import ru.vsu.cs.eliseev.game.game.Game;
 import ru.vsu.cs.eliseev.game.units.Position;
 import ru.vsu.cs.eliseev.game.units.Warrior;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 public class ConsoleGame {
-    private final Game2 game2 = new Game2();
-    private ConsoleDrawer cd = new ConsoleDrawer();
+    private final Game game = new Game();
+    private final ConsoleDrawer cd = new ConsoleDrawer();
     Map<Class<? extends Cell>, String> cellDrawer = cd.getIconsForCell();
     Map<Class<? extends Warrior>, String> warriorDrawer = cd.getIconsForWarrior();
 
     public ConsoleGame() {
-        Game(game2.getBf());
+        Game(game.getBf());
     }
 
     private void Game(Battlefield bf){
@@ -39,7 +35,7 @@ public class ConsoleGame {
                             Position from = Position.fromSting(sc.nextLine());
                             System.out.println("Entry position of destination");
                             Position to = Position.fromSting(sc.nextLine());
-                            if(!game2.move(new Position[]{from, to})){
+                            if(!game.move(new Position[]{from, to})){
                                 System.out.println("Incorrect positions");
                             }
                             print(bf.getField());
@@ -67,8 +63,8 @@ public class ConsoleGame {
             System.out.format("%3s",  i);
             for (int j = 0; j < 25; j++) {
                 if (field[i][j].getWarrior() != null){
-                    String str = cellDrawer.get(field[i][j].getClass()) + warriorDrawer.get(field[i][j].getWarrior().getClass());
-                    System.out.format("%3s",  str);
+                    //String str = cellDrawer.get(field[i][j].getClass()) + warriorDrawer.get(field[i][j].getWarrior().getClass());
+                    System.out.format("%3s",  warriorDrawer.get(field[i][j].getWarrior().getClass()));
                 } else {
                     System.out.format("%3s", cellDrawer.get(field[i][j].getClass()));
                 }

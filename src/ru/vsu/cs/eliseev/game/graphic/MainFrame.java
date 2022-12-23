@@ -1,13 +1,11 @@
 package ru.vsu.cs.eliseev.game.graphic;
 
 import ru.vsu.cs.eliseev.game.battlefield.Cell;
-import ru.vsu.cs.eliseev.game.field.Battlefield;
-import ru.vsu.cs.eliseev.game.game.Game2;
+import ru.vsu.cs.eliseev.game.game.Game;
 import ru.vsu.cs.eliseev.game.units.Position;
 
 import javax.swing.*;
 import javax.swing.table.TableColumn;
-import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -15,14 +13,14 @@ public class MainFrame extends JFrame {
     private final Cell[][] field;
     private Position[] fromTo = null;
     private Position lastPos = null;
-    private Game2 game2 = new Game2();
+    private Game game = new Game();
 
     public MainFrame() {
         setTitle("Kriegsspiel");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-        field = game2.getBf().getField();
+        field = game.getBf().getField();
         FieldTableModel model = new FieldTableModel(field);
         JTable mainField = new JTable(model);
         mainField.setDefaultRenderer(Cell.class, new FieldRender());
@@ -48,7 +46,7 @@ public class MainFrame extends JFrame {
                         lastPos = new Position(col, row);
                     } else {
                         fromTo = new Position[]{lastPos, new Position(col, row)};
-                        game2.move(fromTo);
+                        game.move(fromTo);
                         lastPos = null;
                         mainField.repaint();
                     }

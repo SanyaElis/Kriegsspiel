@@ -49,7 +49,7 @@ public class Battlefield {
         }
     }
 
-    public boolean checkCommunication(Warrior warrior) { //todo обновить игроков
+    public boolean checkCommunication(Warrior warrior) {
         for (Player p : players) {
             if (p.isWarriorPlayers(warrior)) {
                 Position[] positionsOfRelays = p.getPositionsOfRelays();

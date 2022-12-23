@@ -10,13 +10,4 @@ public class SwiftRelay extends Warrior{
         super(position, DefaultSpeed, DefaultRange, DefaultAttack, DefaultDefence);
     }
 
-    @Override
-    public void draw(DrawingWarrior dw) {
-        dw.draw(this);
-    }
-
-    @Override
-    public String print() {
-        return " \uD83D\uDCE8";
-    }
 }

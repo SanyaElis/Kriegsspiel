@@ -1,10 +1,9 @@
 package ru.vsu.cs.eliseev.game.battlefield;
 
-import ru.vsu.cs.eliseev.game.draw.DrawingCell;
 import ru.vsu.cs.eliseev.game.units.Position;
 import ru.vsu.cs.eliseev.game.units.Warrior;
 
-public abstract class Cell  {//todo рисовку отдельно от этого класса или проще засунуть сюда
+public abstract class Cell  {
 
     protected boolean patency;
     protected int defenceBonus;
@@ -34,5 +33,4 @@ public abstract class Cell  {//todo рисовку отдельно от это�
         return position;
     }
 
-    abstract public void draw(DrawingCell dc);
 }

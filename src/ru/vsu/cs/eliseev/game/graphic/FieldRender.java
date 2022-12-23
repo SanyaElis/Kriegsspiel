@@ -1,9 +1,7 @@
 package ru.vsu.cs.eliseev.game.graphic;
 
 import ru.vsu.cs.eliseev.game.battlefield.Cell;
-import ru.vsu.cs.eliseev.game.battlefield.Ground;
-import ru.vsu.cs.eliseev.game.battlefield.Mountain;
-import ru.vsu.cs.eliseev.game.battlefield.MountainPass;
+import ru.vsu.cs.eliseev.game.draw.GraphicDrawer;
 import ru.vsu.cs.eliseev.game.units.Warrior;
 
 import javax.swing.*;
@@ -12,9 +10,9 @@ import java.awt.*;
 import java.util.Map;
 
 public class FieldRender extends JLabel implements TableCellRenderer {
-    private final IconGetter iconGetter = new IconGetter();
-    Map<Class<? extends Cell>, Icon> cellDrawer = iconGetter.getIconsForCell();
-    Map<Class<? extends Warrior>, Icon> warriorDrawer = iconGetter.getIconsForWarrior();
+    private final GraphicDrawer graphicDrawer = new GraphicDrawer();
+    Map<Class<? extends Cell>, Icon> cellDrawer = graphicDrawer.getIconsForCell();
+    Map<Class<? extends Warrior>, Icon> warriorDrawer = graphicDrawer.getIconsForWarrior();
 
     public FieldRender() {
         super.setOpaque(true);

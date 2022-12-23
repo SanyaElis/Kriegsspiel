@@ -10,14 +10,4 @@ public class SwiftCannon extends Warrior  {
     public SwiftCannon(Position position) {
         super(position, DefaultSpeed, DefaultRange, DefaultAttack, DefaultDefence);
     }
-
-    @Override
-    public String print() {
-       return " \uD83D\uDD2B";
-    }
-
-    @Override
-    public void draw(DrawingWarrior dw) {
-        dw.draw(this);
-    }
 }

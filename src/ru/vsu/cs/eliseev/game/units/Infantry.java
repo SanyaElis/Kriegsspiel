@@ -11,13 +11,4 @@ public class Infantry extends Warrior {
         super(position, DefaultSpeed, DefaultRange, DefaultAttack, DefaultDefence);
     }
 
-    @Override
-    public String print() {
-        return " ⚔";
-    }
-
-    @Override
-    public void draw(DrawingWarrior dw) {
-        dw.draw(this);
-    }
 }

@@ -1,8 +1,7 @@
 package ru.vsu.cs.eliseev.game.units;
 
-import ru.vsu.cs.eliseev.game.field.Battlefield;
 
-public abstract class Warrior implements Moving, Drawable {
+public abstract class Warrior implements Moving {
     protected Position position;
     protected int speed;
     protected int range;
@@ -29,5 +28,4 @@ public abstract class Warrior implements Moving, Drawable {
         this.attack = attack;
         this.defence = defence;
     }
-    abstract public void draw(DrawingWarrior dw);
 }

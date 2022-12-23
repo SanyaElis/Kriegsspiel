@@ -1,4 +1,4 @@
-package ru.vsu.cs.eliseev.game.graphic;
+package ru.vsu.cs.eliseev.game.draw;
 
 import ru.vsu.cs.eliseev.game.battlefield.*;
 import ru.vsu.cs.eliseev.game.units.*;
@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class IconGetter {
+public class GraphicDrawer {
     private Map<Class<? extends Cell>, Icon> cellDrawer = new HashMap<>();
     private Map<Class<? extends Warrior>, Icon> warriorDrawer = new HashMap<>();
     private final Icon ground = new ImageIcon("pictures/groung.jpg");
@@ -22,7 +22,7 @@ public class IconGetter {
     private final Icon relay = new ImageIcon("pictures/mountain-road.png");
     private final Icon swiftRelay = new ImageIcon("pictures/raven.png");
 
-    public IconGetter() {
+    public GraphicDrawer() {
         cellDrawer.put(Ground.class, ground);
         cellDrawer.put(Mountain.class, mountain);
         cellDrawer.put(MountainPass.class, mountainPass);
