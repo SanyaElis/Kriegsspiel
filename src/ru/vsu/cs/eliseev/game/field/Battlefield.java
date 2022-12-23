@@ -36,6 +36,7 @@ public class Battlefield {
         field[7][20] = new Fortress(new Position(20, 7));
 
         field[10][10] = new Mountain(new Position(10, 10));
+        field[11][11] = new MountainPass(new Position(11, 11));
     }
 
     public Cell[][] getField() {

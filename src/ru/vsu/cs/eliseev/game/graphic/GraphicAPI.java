@@ -7,9 +7,9 @@ import ru.vsu.cs.eliseev.game.game.VariationOfStep;
 import ru.vsu.cs.eliseev.game.units.Position;
 
 
-public class GraphicAPI implements API {
+public class GraphicAPI /*implements API*/ {
 
-    private GraphicApp frame;
+    /*private GraphicApp frame;
 
     public GraphicAPI() {
         frame = new GraphicApp(new Battlefield());
@@ -42,5 +42,5 @@ public class GraphicAPI implements API {
     @Override
     public void incorrectPosition() {
         frame.incorrectPosition();
-    }
+    }*/
 }

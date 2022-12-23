@@ -3,6 +3,7 @@ package ru.vsu.cs.eliseev.game.graphic;
 import ru.vsu.cs.eliseev.game.battlefield.Cell;
 import ru.vsu.cs.eliseev.game.draw.DrawingCell;
 import ru.vsu.cs.eliseev.game.field.Battlefield;
+import ru.vsu.cs.eliseev.game.game.Game2;
 import ru.vsu.cs.eliseev.game.units.Position;
 
 import javax.swing.*;
@@ -29,6 +30,7 @@ public class GraphicApp extends JFrame {
     private Position[] fromTo = null;
     private Position lastPos = null;
     private boolean canMakeStep = false;
+    private final Game2 game2 = new Game2();
 
     private static class PaintPlace extends JPanel {
         private DrawingCell dc;
@@ -75,7 +77,7 @@ public class GraphicApp extends JFrame {
         this.setContentPane(mainPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
-        this.bf = bf;
+        this.bf = game2.getBf();
 
         paintPanelContainer.setLayout(new BorderLayout());
         myGame = new PaintPlace();
@@ -95,6 +97,8 @@ public class GraphicApp extends JFrame {
                         lastPos = Position.fromMouseClick(e.getX(), e.getY(), myGame.getWidth(), myGame.getHeight());
                     } else {
                         fromTo = new Position[]{lastPos, Position.fromMouseClick(e.getX(), e.getY(), myGame.getWidth(), myGame.getHeight())};
+                        game2.move(fromTo);
+                        myGame.repaint();
                         lastPos = null;
                     }
                 }
@@ -143,20 +147,20 @@ public class GraphicApp extends JFrame {
         statusLabel.setText("Incorrect Position");
     }
 
-    public Position[] getFromTo() {
-        statusLabel.setText("Choose troop and destiny");
-//        while (fromTo == null) {
-//            new java.util.Timer().schedule(
-//                    new java.util.TimerTask() {
-//                        @Override
-//                        public void run() {
-//                            statusLabel.setText("Choose troop and destiny 123");
-//                        }
-//                    },
-//                    5000
-//            );
-//        }
-        return fromTo;
-    }
+//    public Position[] getFromTo() {
+//        statusLabel.setText("Choose troop and destiny");
+////        while (fromTo == null) {
+////            new java.util.Timer().schedule(
+////                    new java.util.TimerTask() {
+////                        @Override
+////                        public void run() {
+////                            statusLabel.setText("Choose troop and destiny 123");
+////                        }
+////                    },
+////                    5000
+////            );
+////        }
+//        return fromTo;
+//    }
 
 }

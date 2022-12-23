@@ -12,9 +12,13 @@ import javax.swing.*;
 public class Main {
 
     public static void main(String[] args) {
+        GraphicApp frame = new GraphicApp(new Battlefield());
+        frame.setVisible(true);
 
-        Game game = new Game(new GraphicAPI());
-        game.startPlay();
+
+//        Game game = new Game(new GraphicAPI());
+//        game.startPlay();
+        ConsoleGame game = new ConsoleGame();
 //        ConsoleGame.startGame();
 //        JFrame frame = new GraphicApp(new Battlefield());
 //        frame.setVisible(true);
