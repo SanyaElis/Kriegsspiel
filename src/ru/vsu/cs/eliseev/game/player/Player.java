@@ -13,6 +13,7 @@ public class Player {
     private List<Warrior> troops;
     private List<Warrior> relays = new ArrayList<>();
     private Battlefield bf;
+    private AskPosition askPosition;
 
     public Player(List<Warrior> troops, Position[] positionsOfArsenal) {
 
@@ -21,10 +22,15 @@ public class Player {
 
     }
 
-    public boolean move(Position lastPos, Position newPos){
-        for (Warrior troop: troops) {
-            if (troop.getPosition().equals(lastPos)){
-                if (troop.canReach(newPos) && bf.canMove(troop, newPos)){
+    public void setAskPosition(AskPosition askPosition) {
+        this.askPosition = askPosition;
+    }
+
+    public boolean move(Position lastPos, Position newPos) {
+        for (Warrior troop : troops) {
+            if (troop.getPosition().equals(lastPos)) {
+                if (troop.canReach(newPos) && bf.canMove(troop, newPos)) {
+                    bf.getField()[lastPos.getY()][lastPos.getX()].setWarrior(null);
                     troop.move(newPos);
                     bf.updateTroops(this);
                     return true;
@@ -34,6 +40,9 @@ public class Player {
         return false;
     }
 
+    public Position[] makeMove() {
+        return askPosition.askPosition();
+    }
 
     public List<Warrior> getTroops() {
         return troops;
@@ -47,26 +56,26 @@ public class Player {
         return positionsOfArsenal;
     }
 
-    public Position[] getPositionsOfRelays(){
+    public Position[] getPositionsOfRelays() {
         Position[] positions = new Position[relays.size() + positionsOfArsenal.length];
         System.arraycopy(positionsOfArsenal, 0, positions, 0, positionsOfArsenal.length);
         int j = positionsOfArsenal.length - 1;
-        for (Warrior warrior: relays) {
+        for (Warrior warrior : relays) {
             positions[j] = warrior.getPosition();
         }
         return positions;
     }
 
-    public boolean isWarriorPlayers(Warrior war){
-        for (Warrior warrior: troops) {
-            if (war.getPosition().equals(warrior.getPosition())){
+    public boolean isWarriorPlayers(Warrior war) {
+        for (Warrior warrior : troops) {
+            if (war.getPosition().equals(warrior.getPosition())) {
                 return true;
             }
         }
         return false;
     }
 
-    public void setBattlefield(Battlefield bf){
+    public void setBattlefield(Battlefield bf) {
         this.bf = bf;
     }
 }

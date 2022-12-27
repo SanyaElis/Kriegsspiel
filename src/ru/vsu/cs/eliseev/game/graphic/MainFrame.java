@@ -1,7 +1,9 @@
 package ru.vsu.cs.eliseev.game.graphic;
 
 import ru.vsu.cs.eliseev.game.battlefield.Cell;
-import ru.vsu.cs.eliseev.game.game.Game;
+import ru.vsu.cs.eliseev.game.game.API;
+import ru.vsu.cs.eliseev.game.game.Game2;
+import ru.vsu.cs.eliseev.game.game.VariationOfStep;
 import ru.vsu.cs.eliseev.game.units.Position;
 
 import javax.swing.*;
@@ -10,19 +12,18 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class MainFrame extends JFrame {
-    private final Cell[][] field;
+    private Game2 game2 = new Game2();
+    private Cell[][] field = game2.getBf().getField();
     private Position[] fromTo = null;
     private Position lastPos = null;
-    private Game game = new Game();
+    private JTable mainField;
 
     public MainFrame() {
         setTitle("Kriegsspiel");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
-        field = game.getBf().getField();
         FieldTableModel model = new FieldTableModel(field);
-        JTable mainField = new JTable(model);
+        mainField = new JTable(model);
         mainField.setDefaultRenderer(Cell.class, new FieldRender());
         mainField.setRowHeight(35);
         TableColumn column;
@@ -46,7 +47,7 @@ public class MainFrame extends JFrame {
                         lastPos = new Position(col, row);
                     } else {
                         fromTo = new Position[]{lastPos, new Position(col, row)};
-                        game.move(fromTo);
+                        game2.move(fromTo);
                         lastPos = null;
                         mainField.repaint();
                     }
@@ -80,5 +81,40 @@ public class MainFrame extends JFrame {
         MainFrame testFrame = new MainFrame();
         testFrame.setSize(910,775);
         testFrame.setVisible(true);
+    }
+
+    public boolean stop() {
+        return false;
+    }
+
+    public VariationOfStep command() {
+        return VariationOfStep.MOVE;
+    }
+
+    public void drawBattlefield(Cell[][] field) {
+    }
+
+
+    public Position[] askPosition() {
+        while (fromTo == null) {
+            //System.out.println("Wait");
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            //System.out.println("Wait");
+                        }
+                    },
+                    10000
+            );
+        }
+        Position[] result = fromTo.clone();
+        fromTo = null;
+        return result;
+    }
+
+
+    public void incorrectPosition() {
+        System.out.println("Error");
     }
 }

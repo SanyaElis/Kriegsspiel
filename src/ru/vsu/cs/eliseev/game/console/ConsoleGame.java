@@ -3,7 +3,7 @@ package ru.vsu.cs.eliseev.game.console;
 import ru.vsu.cs.eliseev.game.battlefield.Cell;
 import ru.vsu.cs.eliseev.game.draw.ConsoleDrawer;
 import ru.vsu.cs.eliseev.game.field.Battlefield;
-import ru.vsu.cs.eliseev.game.game.Game;
+import ru.vsu.cs.eliseev.game.game.Game2;
 import ru.vsu.cs.eliseev.game.units.Position;
 import ru.vsu.cs.eliseev.game.units.Warrior;
 
@@ -11,13 +11,13 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class ConsoleGame {
-    private final Game game = new Game();
+    private final Game2 game2 = new Game2();
     private final ConsoleDrawer cd = new ConsoleDrawer();
     Map<Class<? extends Cell>, String> cellDrawer = cd.getIconsForCell();
     Map<Class<? extends Warrior>, String> warriorDrawer = cd.getIconsForWarrior();
 
     public ConsoleGame() {
-        Game(game.getBf());
+        Game(game2.getBf());
     }
 
     private void Game(Battlefield bf){
@@ -35,7 +35,7 @@ public class ConsoleGame {
                             Position from = Position.fromSting(sc.nextLine());
                             System.out.println("Entry position of destination");
                             Position to = Position.fromSting(sc.nextLine());
-                            if(!game.move(new Position[]{from, to})){
+                            if(!game2.move(new Position[]{from, to})){
                                 System.out.println("Incorrect positions");
                             }
                             print(bf.getField());

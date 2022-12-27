@@ -55,7 +55,6 @@ public class Battlefield {
                 Position[] positionsOfRelays = p.getPositionsOfRelays();
                 for (Position relayPos : positionsOfRelays) {
                     if (checkOneCommunication(relayPos, warrior.getPosition())) {
-                        field[warrior.getPosition().getY()][warrior.getPosition().getX()].setWarrior(null);
                         return true;
                     }
                 }

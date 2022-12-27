@@ -1,9 +1,9 @@
 package ru.vsu.cs.eliseev.game.server;
 
 public enum Command {
-    GAME("GAME"),
-    BET("BET"),
-    RESP("RESP"),
+    MOVE("MOVE"),
+    //BET("BET"),
+    //RESP("RESP"),
     END("END");
 
     public static final String SEPARATOR = ":";

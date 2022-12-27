@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class AppServer {
-    public static final int DEFAULT_PORT = 9999;
+    public static final int DEFAULT_PORT = 9998;
 
     private final ServerSocket serverSocket;
 
