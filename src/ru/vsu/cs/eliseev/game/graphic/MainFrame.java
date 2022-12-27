@@ -12,13 +12,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class MainFrame extends JFrame {
-    private Game2 game2 = new Game2();
-    private Cell[][] field = game2.getBf().getField();
+    private Game2 game2;
+    private Cell[][] field;
     private Position[] fromTo = null;
     private Position lastPos = null;
     private JTable mainField;
 
-    public MainFrame() {
+    public void initialization(Cell[][] field) {
         setTitle("Kriegsspiel");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -77,9 +77,20 @@ public class MainFrame extends JFrame {
         this.pack();
     }
 
+    public MainFrame() {
+        game2 = new Game2();
+        this.field = game2.getBf().getField();
+        initialization(field);
+    }
+
+    public MainFrame(Cell[][] cells) {
+        this.field = cells;
+        initialization(cells);
+    }
+
     public static void main(String[] args) {
         MainFrame testFrame = new MainFrame();
-        testFrame.setSize(910,775);
+        testFrame.setSize(910, 775);
         testFrame.setVisible(true);
     }
 

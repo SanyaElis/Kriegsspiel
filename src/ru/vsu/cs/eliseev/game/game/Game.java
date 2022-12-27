@@ -1,50 +1,61 @@
 package ru.vsu.cs.eliseev.game.game;
 
+
 import ru.vsu.cs.eliseev.game.field.Battlefield;
+import ru.vsu.cs.eliseev.game.player.AskPosition;
 import ru.vsu.cs.eliseev.game.player.Player;
+import ru.vsu.cs.eliseev.game.player.Bot;
 import ru.vsu.cs.eliseev.game.units.Position;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.List;
 
 public class Game {
-
+    private final API gameAPI;
     private final Battlefield bf = new Battlefield();
-    private final Queue<Player> playersOrder;
-    private int numberOfMoves = 0;
-    private int numberOfAttacks = 0;
 
-    public Game() {
-        playersOrder = new LinkedList<>(bf.getPlayers());
+    public Game(API gameAPI) {
+        this.gameAPI = gameAPI;
+        Player mainPlayer = bf.getPlayers().get(0);
+        mainPlayer.setAskPosition(new Bot(mainPlayer));
     }
-
-    private void changePlayer(){
-        numberOfMoves = 0;
-        numberOfAttacks = 0;
-        playersOrder.add(playersOrder.poll());
+    public Game(API gameAPI, AskPosition playerStrategy){
+        this.gameAPI = gameAPI;
+        bf.getPlayers().get(0).setAskPosition(playerStrategy);
     }
+    public void startPlay(){
+        gameAPI.drawBattlefield(bf.getField());
+        List<Player> players = bf.getPlayers();
+        players.get(1).setAskPosition(new Bot(players.get(1)));
+        VariationOfStep command = VariationOfStep.START;
+        while (command != VariationOfStep.STOP) {
 
-    private Player stepOrder(){
-        return playersOrder.peek();
-    }
+            for (Player p : players) {
+                int numOfMoves = 0;
+                int numOfAttacks = 0;
+                command = gameAPI.command();
+                while ((numOfAttacks < 1 && numOfMoves < 1) && command != VariationOfStep.END) {
+                    if (command == VariationOfStep.ATTACK) {
+                        numOfAttacks++;
+                    }
+                    if (command == VariationOfStep.MOVE) {
+                        Position[] fromTo = p.makeMove();
+                        if (fromTo != null){
+                            if (!p.move(fromTo[0], fromTo[1])) {
+                                gameAPI.incorrectPosition();
+                            } else {
+                                numOfMoves++;
+                                gameAPI.drawBattlefield(bf.getField());
+                            }
+                        }
+                    }
+                    command = gameAPI.command();
+                }
 
-    public boolean move(Position[] fromTo){
-        if (numberOfMoves > 5 || numberOfAttacks > 1){
-            changePlayer();
-            return false;
+            }
+
+            if (gameAPI.stop()){
+                command = VariationOfStep.STOP;
+            }
         }
-        if (stepOrder().move(fromTo[0], fromTo[1])){
-            numberOfMoves++;
-            return true;
-        }
-        return false;
-    }
-
-    public void endOfStep(){
-        changePlayer();
-    }
-
-    public Battlefield getBf() {
-        return bf;
     }
 }

@@ -14,7 +14,7 @@ public class SocketMove implements AskPosition {
     private final PrintWriter out;
     private final BufferedReader in;
 
-    public SocketMove(Socket socket) {//todo отказаться
+    public SocketMove(Socket socket) {
         this.socket = socket;
         try {
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));

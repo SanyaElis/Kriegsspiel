@@ -27,6 +27,9 @@ public class Player {
     }
 
     public boolean move(Position lastPos, Position newPos) {
+        if (newPos.getX() > 24 || newPos.getX() < 0 || newPos.getY() > 19 || newPos.getY() < 0 )
+            return false;
+
         for (Warrior troop : troops) {
             if (troop.getPosition().equals(lastPos)) {
                 if (troop.canReach(newPos) && bf.canMove(troop, newPos)) {

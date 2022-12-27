@@ -25,6 +25,11 @@ public class GraphicAPI implements API {
 
     @Override
     public void drawBattlefield(Cell[][] field) {
+        if (mainFrame == null){
+            mainFrame = new MainFrame(field);
+            mainFrame.setSize(910,775);
+            mainFrame.setVisible(true);
+        }
         mainFrame.repaint();
     }
 

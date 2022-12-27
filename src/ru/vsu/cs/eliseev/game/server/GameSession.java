@@ -9,9 +9,9 @@ import java.net.Socket;
 public class GameSession implements Runnable {
     private final Game game;
 
-    public GameSession(Socket socket) {//todo Бота
+    public GameSession(Socket socket) {
         SocketMove socketMove = new SocketMove(socket);
-        game = new Game(new GraphicAPI(), socketMove);
+        game = new Game(new ConsoleAPI(), socketMove);
     }
 
     public void run() {
